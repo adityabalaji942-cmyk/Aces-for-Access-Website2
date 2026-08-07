@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aces for Access: Free Tennis, Coaching & Stress Relief for Columbus Youth</title>
+<meta name="description" content="Aces for Access is a new 501(c)(3) nonprofit set to provide free rackets, coaching, and court time to underserved youth in Columbus, Ohio, built on research into stress, the teenage brain, and tennis.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0F2019;
+    --court:#0D3B2C;
+    --court-2:#144C39;
+    --court-deep:#082017;
+    --chalk:#F7F4EC;
+    --paper:#FFFFFF;
+    --ace:#D8F24E;
+    --ace-dim:#c3db46;
+    --clay:#C1440E;
+    --clay-2:#A6390A;
+    --line:rgba(15,32,25,.13);
+    --line-soft:rgba(247,244,236,.18);
+    --muted:#526457;
+    --shadow:0 20px 50px -25px rgba(8,32,23,.45);
+    --radius:18px;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--chalk);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;margin:0;font-weight:600;letter-spacing:-.01em;}
+  p{margin:0;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:12.5px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--clay);
+    font-weight:500;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;background:var(--clay);
+    display:inline-block;
+  }
+  .eyebrow.light{color:var(--ace);}
+  .eyebrow.light::before{background:var(--ace);}
+
+  button{font-family:inherit;cursor:pointer;}
+  :focus-visible{outline:3px solid var(--clay); outline-offset:3px; border-radius:4px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-clay{background:var(--clay);color:#fff;box-shadow:0 14px 30px -14px rgba(193,68,14,.65);}
+  .btn-clay:hover{background:var(--clay-2);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:transparent;}
+  .btn-ghost:hover{background:rgba(15,32,25,.05);}
+  .btn-ace{background:var(--ace);color:var(--court-deep);box-shadow:0 14px 30px -14px rgba(216,242,78,.55);}
+  .btn-ace:hover{background:var(--ace-dim);}
+  .btn-outline-light{border-color:var(--line-soft);color:#fff;}
+  .btn-outline-light:hover{background:rgba(255,255,255,.08);}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(247,244,236,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transition:padding .25s ease;
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:18px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  header.scrolled .nav-inner{padding:12px 28px;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo svg{width:34px;height:34px;flex-shrink:0;}
+  .logo-text{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--ink);line-height:1.05;}
+  .logo-text span{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--muted);font-weight:400;text-transform:uppercase;margin-top:2px;}
+
+  nav.primary{display:flex;align-items:center;gap:2px;}
+  nav.primary a{
+    padding:10px 15px;font-size:14.5px;font-weight:500;text-decoration:none;
+    border-radius:999px;color:var(--ink);opacity:.72;
+    transition:opacity .2s, background .2s;
+  }
+  nav.primary a:hover{opacity:1;background:rgba(15,32,25,.05);}
+  nav.primary a.active{opacity:1;background:rgba(15,32,25,.08);}
+  .nav-actions{display:flex;align-items:center;gap:10px;}
+
+  .hamburger{
+    display:none;
+    width:42px;height:42px;border-radius:999px;border:1px solid var(--line);
+    background:transparent;align-items:center;justify-content:center;
+  }
+  .hamburger span, .hamburger::before, .hamburger::after{
+    content:"";display:block;width:18px;height:2px;background:var(--ink);
+    position:relative;transition:.2s;
+  }
+  .hamburger{flex-direction:column;gap:4px;}
+
+  .mobile-menu{
+    display:none;flex-direction:column;gap:2px;
+    padding:10px 28px 22px;border-top:1px solid var(--line);
+    background:var(--chalk);
+  }
+  .mobile-menu a{padding:12px 8px;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+
+  @media (max-width:880px){
+    nav.primary{display:none;}
+    .hamburger{display:flex;}
+    .nav-actions .btn-ghost{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    color:#fff;
+    overflow:hidden;
+    background:var(--court-deep);
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(180deg, rgba(8,32,23,.55) 0%, rgba(8,32,23,.78) 55%, var(--court-deep) 100%),
+      url('https://images.unsplash.com/photo-1678734491865-d4dc8a5f5399?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover;background-position:center;
+    filter:saturate(1.05);
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    max-width:var(--maxw);margin:0 auto;padding:96px 28px 60px;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.22);
+    padding:7px 14px;border-radius:999px;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    margin-bottom:26px;
+  }
+  .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--ace);}
+  .hero h1{
+    font-size:clamp(40px,6vw,74px);
+    line-height:1.02;
+    max-width:16ch;
+    font-weight:600;
+  }
+  .hero h1 em{font-style:italic;color:var(--ace);font-weight:500;}
+  .hero-sub{
+    margin-top:26px;font-size:clamp(16px,1.6vw,19px);
+    max-width:52ch;color:rgba(255,255,255,.82);
+  }
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px;}
+
+  .hero-stats{
+    position:relative;z-index:2;
+    max-width:var(--maxw);margin:0 auto;padding:0 28px 70px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .hero-stat{
+    background:rgba(8,32,23,.35);
+    padding:26px 24px;
+  }
+  .hero-stat .num{
+    font-family:'Fraunces',serif;font-size:clamp(28px,3.4vw,40px);color:var(--ace);font-weight:600;
+  }
+  .hero-stat .lbl{font-size:13.5px;color:rgba(255,255,255,.72);margin-top:6px;max-width:26ch;}
+  @media (max-width:720px){.hero-stats{grid-template-columns:1fr;}}
+
+  /* waveform divider: stress -> calm */
+  .waveform{display:block;width:100%;height:auto;position:relative;z-index:2;}
+  .waveform path{
+    fill:none;stroke:var(--ace);stroke-width:2;stroke-linecap:round;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1);
+  }
+  .waveform.in-view path{stroke-dashoffset:0;}
+
+  /* ---------- Section basics ---------- */
+  section{padding:100px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,3.6vw,44px);margin-top:16px;}
+  .section-head h2 em{font-style:italic;color:var(--clay);font-weight:500;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* ---------- Story / who we are ---------- */
+  .story{background:var(--paper);}
+  .story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start;}
+  .story-photo{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  .story-photo img{width:100%;height:520px;object-fit:cover;}
+  .story-photo-cap{
+    position:absolute;left:16px;bottom:16px;right:16px;
+    background:rgba(8,32,23,.72);backdrop-filter:blur(6px);
+    color:#fff;border-radius:12px;padding:14px 16px;
+    font-size:13.5px;line-height:1.4;
+  }
+  .story-photo-cap b{font-weight:600;color:var(--ace);}
+  .story-copy p{margin-bottom:18px;color:#2a3a30;font-size:16.5px;}
+  .story-copy p:last-of-type{margin-bottom:0;}
+  .pull-line{
+    border-left:3px solid var(--clay);
+    padding:4px 0 4px 22px;margin:30px 0;
+    font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--court);
+    font-weight:500;
+  }
+  .story-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px;}
+  .story-gallery figure{margin:0;border-radius:14px;overflow:hidden;cursor:zoom-in;position:relative;}
+  .story-gallery img{height:200px;width:100%;object-fit:cover;transition:transform .5s ease;}
+  .story-gallery figure:hover img{transform:scale(1.06);}
+  .story-gallery figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+    background:linear-gradient(0deg, rgba(8,32,23,.75), transparent);
+    color:#fff;font-size:12px;font-family:'IBM Plex Mono',monospace;
+  }
+
+  @media (max-width:900px){.story-grid{grid-template-columns:1fr;}.story-photo img{height:360px;}}
+
+  /* ---------- Programs ---------- */
+  .programs{background:var(--chalk);}
+  .program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .program-card{
+    background:var(--paper);border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .program-card:hover{transform:translateY(-6px);}
+  .program-media{position:relative;height:210px;overflow:hidden;cursor:zoom-in;}
+  .program-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+  .program-card:hover .program-media img{transform:scale(1.08);}
+  .program-num{
+    position:absolute;top:14px;left:14px;
+    background:rgba(8,32,23,.72);color:var(--ace);
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    padding:5px 10px;border-radius:999px;
+  }
+  .program-body{padding:26px;}
+  .program-tag{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);font-weight:500;}
+  .program-body h3{font-size:21px;margin-top:8px;}
+  .program-body p{margin-top:10px;color:var(--muted);font-size:14.8px;}
+  @media (max-width:900px){.program-grid{grid-template-columns:1fr;}}
+
+  /* commitments */
+  .commit-wrap{
+    margin-top:60px;background:var(--court);border-radius:24px;padding:50px;color:#fff;
+    display:grid;grid-template-columns:.9fr 1.6fr;gap:40px;
+  }
+  .commit-intro h3{color:#fff;font-size:26px;}
+  .commit-intro p{color:rgba(255,255,255,.7);margin-top:14px;font-size:15px;}
+  .commit-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .commit-item{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:14px;padding:20px;display:flex;gap:14px;
+  }
+  .commit-letter{
+    font-family:'Fraunces',serif;font-size:22px;color:var(--ace);font-weight:600;flex-shrink:0;
+  }
+  .commit-item p{font-size:14.3px;color:rgba(255,255,255,.85);}
+  @media (max-width:900px){.commit-wrap{grid-template-columns:1fr;padding:32px;}.commit-list{grid-template-columns:1fr;}}
+
+  /* ---------- Sign up ---------- */
+  .signup{background:var(--paper);}
+  .signup-shell{max-width:720px;margin:0 auto;background:var(--chalk);border:1px solid var(--line);border-radius:24px;padding:44px;}
+  .signup-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media (max-width:640px){.signup-row{grid-template-columns:1fr;}.signup-shell{padding:28px;}}
+  .form-error{background:#fbeceb;border-color:#f0c6c2;color:#8a2c22;}
+
+  /* ---------- Donate band ---------- */
+  .donate-band{
+    background:linear-gradient(120deg, var(--clay) 0%, var(--clay-2) 100%);
+    color:#fff;text-align:center;
+  }
+  .donate-band .wrap{max-width:760px;}
+  .donate-band h2{font-size:clamp(30px,4vw,46px);color:#fff;}
+  .donate-band p{margin-top:18px;color:rgba(255,255,255,.85);font-size:17px;}
+  .donate-band .btn-ace{margin-top:32px;}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--chalk);}
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:24px 4px;font-family:'Fraunces',serif;font-size:19px;font-weight:500;color:var(--ink);
+  }
+  .faq-icon{
+    width:28px;height:28px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:20px;
+    position:relative;
+  }
+  .faq-icon::before,.faq-icon::after{content:"";position:absolute;background:var(--ink);transition:.25s;}
+  .faq-icon::before{width:11px;height:1.4px;}
+  .faq-icon::after{width:1.4px;height:11px;}
+  .faq-item.open .faq-icon::after{transform:rotate(90deg);opacity:0;}
+  .faq-item.open .faq-icon{background:var(--ace);border-color:var(--ace);}
+  .faq-item.open .faq-icon::before,.faq-item.open .faq-icon::after{background:var(--court-deep);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a p{padding:0 4px 24px;color:var(--muted);font-size:15.3px;max-width:60ch;}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;}
+  .contact-card{
+    background:var(--court);color:#fff;border-radius:22px;padding:40px;
+  }
+  .contact-card h3{color:#fff;font-size:24px;}
+  .contact-card p.intro{color:rgba(255,255,255,.72);margin-top:12px;font-size:14.7px;}
+  .contact-info{margin-top:30px;display:flex;flex-direction:column;gap:22px;}
+  .contact-info .item{display:flex;gap:14px;align-items:flex-start;}
+  .contact-info .ic{
+    width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.1);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .contact-info .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ace);}
+  .contact-info .val{margin-top:4px;font-size:15px;}
+  .contact-info a{text-decoration:none;}
+  .contact-info a:hover{text-decoration:underline;}
+
+  form.cform{display:flex;flex-direction:column;gap:18px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{font-size:13px;font-weight:600;color:var(--ink);}
+  .field input, .field textarea{
+    border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;
+    font-family:inherit;font-size:15px;background:var(--chalk);color:var(--ink);
+    transition:border-color .2s;
+  }
+  .field input:focus, .field textarea:focus{border-color:var(--clay);outline:none;}
+  .field textarea{resize:vertical;min-height:130px;}
+  .field .err{font-size:12.5px;color:var(--clay-2);display:none;}
+  .field.invalid input, .field.invalid textarea{border-color:var(--clay-2);}
+  .field.invalid .err{display:block;}
+  .form-foot{display:flex;align-items:center;gap:16px;margin-top:6px;flex-wrap:wrap;}
+  .form-note{font-size:13px;color:var(--muted);}
+  .form-success{
+    display:none;background:#eef7ea;border:1px solid #cfe6c1;color:#2c5c22;
+    padding:16px 18px;border-radius:12px;font-size:14.5px;margin-top:8px;
+  }
+  .form-success.show{display:block;}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--court-deep);color:rgba(255,255,255,.75);padding:70px 0 30px;}
+  .footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .footer-logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;margin-bottom:14px;}
+  .footer-logo .logo-text{color:#fff;}
+  .footer-logo .logo-text span{color:rgba(255,255,255,.55);}
+  .footer-top p{font-size:14px;max-width:32ch;color:rgba(255,255,255,.6);}
+  .footer-col h4{color:#fff;font-size:14px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin-bottom:16px;}
+  .footer-col a{display:block;text-decoration:none;font-size:14.5px;color:rgba(255,255,255,.65);margin-bottom:12px;}
+  .footer-col a:hover{color:var(--ace);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;color:rgba(255,255,255,.45);flex-wrap:wrap;gap:12px;}
+  @media (max-width:820px){.footer-top{grid-template-columns:1fr;}}
+
+  /* back to top */
+  .totop{
+    position:fixed;right:22px;bottom:22px;z-index:90;
+    width:48px;height:48px;border-radius:50%;background:var(--court);color:var(--ace);
+    border:none;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;
+    font-size:18px;opacity:0;pointer-events:none;transform:translateY(10px);
+    transition:.25s;
+  }
+  .totop.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(8,20,15,.92);z-index:200;
+    display:none;align-items:center;justify-content:center;padding:40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:min(900px,92vw);max-height:82vh;border-radius:12px;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5);}
+  .lightbox-cap{color:#fff;text-align:center;margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:13px;}
+  .lightbox-close{
+    position:absolute;top:26px;right:30px;width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:20px;
+  }
+
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  [data-reveal].in-view{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" stroke="#0D3B2C" stroke-width="2"/>
+        <path d="M20 1C13 8 13 32 20 39M20 1c7 7 7 24 0 31M1.5 20h37" stroke="#0D3B2C" stroke-width="1.4"/>
+        <circle cx="20" cy="20" r="19" stroke="#D8F24E" stroke-width="2" stroke-dasharray="4 6"/>
+      </svg>
+      <span class="logo-text">Aces for Access<span>Tennis for all youth</span></span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="#programs">Programs</a>
+      <a href="#story">Our Story</a>
+      <a href="#signup">Sign Up</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-ghost">Get Involved</a>
+      <a href="https://www.gofundme.com/f/help-underserved-youth-play-tennis" target="_blank" rel="noopener" class="btn btn-clay">Donate</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#programs">Programs</a>
+    <a href="#story">Our Story</a>
+    <a href="#signup">Sign Up</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.gofundme.com/f/help-underserved-youth-play-tennis" target="_blank" rel="noopener">Donate</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div id="top"></div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> Tennis for All Youth · Columbus, Ohio</div>
+    <h1>Empowering kids to <em>play</em>, and thrive on their own terms.</h1>
+    <p class="hero-sub">Aces for Access breaks the cost barrier so every kid gets a swing at the game: free rackets, free coaching, free court time, and the science-backed stress relief that comes with all three.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-ace">Join Our Mission</a>
+      <a href="#programs" class="btn btn-outline-light">See Our Programs</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num" data-count="6" data-suffix="">0</div><div class="lbl">Experienced volunteer coaches, our "Aces," ready to lead our first clinics</div></div>
+    <div class="hero-stat"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">Of every clinic will be free: equipment, coaching, and court time included</div></div>
+    <div class="hero-stat"><div class="num" data-count="2026" data-suffix="" data-nogroup="true">0</div><div class="lbl">The year we're launching our first free clinics in Columbus, Ohio</div></div>
+  </div>
+  <svg class="waveform" id="waveform" viewBox="0 0 1400 90" preserveAspectRatio="none">
+    <path d="M0,45 L60,10 L110,80 L160,15 L210,70 L260,25 L310,60 L360,45 C 500,45 550,45 650,45 C 800,45 850,45 950,45 L1000,45 C 1150,45 1200,45 1400,45"></path>
+  </svg>
+</section>
+
+<!-- ================= STORY ================= -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Who we are</span>
+      <h2>Grounded in <em>neuroscience</em>, built on a court.</h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-photo" data-reveal>
+        <img src="https://kluongly-mckieucks-heegs.yolasite.com/ws/media-library/97b28b8f61344fb74be3b69bc6f21db5/prathik_tennis_final2.jpg" alt="Prathiksai Amathi, founder of Aces for Access, on the tennis court" loading="lazy">
+        <div class="story-photo-cap"><b>Prathiksai Amathi</b>, Founder, age 15, Powell, Ohio · Founded 2026</div>
+      </div>
+      <div class="story-copy" data-reveal>
+        <p>Aces for Access was founded by <strong>Prathiksai Amathi</strong>, a varsity tennis player at Olentangy High School who spent his freshman year researching what chronic stress does to the teenage brain, work he's now extending at Ohio State University, with Department of Defense funding, into how sound affects PTSD treatment.</p>
+        <p>His research pointed to something concrete: adolescent stress causes measurable neurobiological damage, and physical activity like tennis directly lowers cortisol, protecting the developing brain against it.</p>
+        <div class="pull-line">"Put a racket in a kid's hand, teach them the game, and you give them more than a sport."</div>
+        <p>The catch was access. The kids who needed this most were the same kids who couldn't afford a single racket. So Prathik is building Aces for Access, a new 501(c)(3) nonprofit set to provide completely free tennis equipment, court access, and coaching to underserved youth across Columbus. We're just getting started, and our first clinics are still ahead of us.</p>
+
+        <div class="story-gallery">
+          <figure class="lightbox-trigger" data-full="https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=1600&q=80" data-cap="Every racket donated is theirs to keep.">
+            <img src="https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=900&q=80" alt="Donated tennis racket ready to be given to a young player" loading="lazy">
+            <figcaption>Equipment donations</figcaption>
+          </figure>
+          <figure class="lightbox-trigger" data-full="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?auto=format&fit=crop&w=1600&q=80" data-cap="One of our volunteer coaches, mid-session.">
+            <img src="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?auto=format&fit=crop&w=900&q=80" alt="Coach holding a tennis ball and racket, mentoring a young player" loading="lazy">
+            <figcaption>Coaching &amp; mentorship</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMS ================= -->
+<section class="programs" id="programs">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">What we run</span>
+      <h2>Three ways we get kids <em>on court</em>.</h2>
+    </div>
+    <div class="program-grid">
+      <div class="program-card" data-reveal>
+        <div class="program-media lightbox-trigger" data-full="https://images.unsplash.com/photo-1504030688812-2c4804e8d291?auto=format&fit=crop&w=1600&q=80" data-cap="Open clinics welcome ages 10–18.">
+          <span class="program-num">01 / 03</span>
+          <img src="https://images.unsplash.com/photo-1504030688812-2c4804e8d291?auto=format&fit=crop&w=900&q=80" alt="Young player holding a tennis racket, standing on a sunlit court" loading="lazy">
+        </div>
+        <div class="program-body">
+          <span class="program-tag">Clinics</span>
+          <h3>Free Group Clinics</h3>
+          <p>Open sessions for ages 10–18, combining fun, fitness, and stress relief through the power of tennis.</p>
+        </div>
+      </div>
+      <div class="program-card" data-reveal>
+        <div class="program-media lightbox-trigger" data-full="https://images.unsplash.com/photo-1637071692126-d0ee7df18271?auto=format&fit=crop&w=1600&q=80" data-cap="Six volunteer coaches, our Aces.">
+          <span class="program-num">02 / 03</span>
+          <img src="https://images.unsplash.com/photo-1637071692126-d0ee7df18271?auto=format&fit=crop&w=900&q=80" alt="Coach on a tennis court holding a racket, ready to teach" loading="lazy">
+        </div>
+        <div class="program-body">
+          <span class="program-tag">Coaching</span>
+          <h3>Coaching &amp; Mentorship</h3>
+          <p>Six experienced coaches, our Aces, offer expert guidance and encouragement, ready to nurture growth on and off the court.</p>
+        </div>
+      </div>
+      <div class="program-card" data-reveal>
+        <div class="program-media lightbox-trigger" data-full="https://images.unsplash.com/photo-1715431900724-6bf15144ae0e?auto=format&fit=crop&w=1600&q=80" data-cap="No child is sidelined by cost.">
+          <span class="program-num">03 / 03</span>
+          <img src="https://images.unsplash.com/photo-1715431900724-6bf15144ae0e?auto=format&fit=crop&w=900&q=80" alt="Player standing on a tennis court holding a racket, gear in hand" loading="lazy">
+        </div>
+        <div class="program-body">
+          <span class="program-tag">Equipment</span>
+          <h3>Equipment Donations</h3>
+          <p>Free tennis rackets and gear, so no child is sidelined by cost, theirs to keep, long after the clinic ends.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="commit-wrap" data-reveal>
+      <div class="commit-intro">
+        <span class="eyebrow light">What we do</span>
+        <h3>Four commitments, every clinic.</h3>
+        <p>Every session we run is built around the same four promises to the families who show up.</p>
+      </div>
+      <div class="commit-list">
+        <div class="commit-item"><span class="commit-letter">A</span><p>Offer evidence-based stress relief through physical activity via coaching.</p></div>
+        <div class="commit-item"><span class="commit-letter">B</span><p>Donate accessible equipment and court time, free of charge.</p></div>
+        <div class="commit-item"><span class="commit-letter">C</span><p>Employ dedicated, background-checked volunteer coaches.</p></div>
+        <div class="commit-item"><span class="commit-letter">D</span><p>Run personalized group clinics and one-on-one lessons.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIGN UP ================= -->
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <span class="eyebrow" style="justify-content:center;">Get on the list</span>
+      <h2>Sign up to hear <em>first</em>.</h2>
+      <p style="margin-top:16px;color:var(--muted);font-size:16px;">We're building our first clinics in Columbus right now. Tell us who you are and we'll reach out with dates, locations, and next steps as soon as they're set.</p>
+    </div>
+
+    <div class="signup-shell" data-reveal>
+      <form class="cform signup-form" id="signupForm" novalidate>
+        <div class="signup-row">
+          <div class="field" id="s-name">
+            <label for="s_name">Your name</label>
+            <input type="text" id="s_name" name="name" placeholder="Parent, guardian, or student" required>
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field" id="s-student">
+            <label for="s_student">Name of student</label>
+            <input type="text" id="s_student" name="student" placeholder="Who will be playing?" required>
+            <span class="err">Please enter the student's name.</span>
+          </div>
+        </div>
+        <div class="signup-row">
+          <div class="field" id="s-email">
+            <label for="s_email">Email</label>
+            <input type="email" id="s_email" name="email" placeholder="you@example.com">
+            <span class="err">Please enter a valid email, or fill in a phone number instead.</span>
+          </div>
+          <div class="field" id="s-phone">
+            <label for="s_phone">Phone number <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
+            <input type="tel" id="s_phone" name="phone" placeholder="(xxx) xxx-xxxx">
+            <span class="err">Please enter a phone number, or fill in an email instead.</span>
+          </div>
+        </div>
+        <p class="form-note">Please provide at least one: email or phone number.</p>
+        <div class="form-foot">
+          <button type="submit" class="btn btn-clay">Join the List</button>
+        </div>
+        <div class="form-success" id="signupSuccess">Thanks for signing up. We'll be in touch as soon as our first clinic dates are set.</div>
+        <div class="form-success form-error" id="signupError">Something went wrong submitting the form. Please try again, or email us directly.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DONATE BAND ================= -->
+<section class="donate-band">
+  <div class="wrap">
+    <span class="eyebrow light" style="justify-content:center;">Get involved</span>
+    <h2>Help a child discover tennis.</h2>
+    <p>Your support places rackets, coaches, and hope into the hands of children who need it most. Join us in making tennis a sport for all kids, fostering resilience and joy through every swing.</p>
+    <a href="https://www.gofundme.com/f/help-underserved-youth-play-tennis" target="_blank" rel="noopener" class="btn btn-ace">Donate to Support Our Cause</a>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">FAQs</span>
+      <h2>Common <em>questions</em>.</h2>
+    </div>
+    <div class="faq-list" data-reveal>
+      <div class="faq-item open">
+        <button class="faq-q"><span>How can kids join a clinic?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Contact us via email or phone to sign up for free group sessions or coaching. No experience or equipment necessary.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Are your programs free?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Yes, all our clinics, gear, and coaching are offered at no cost to underserved youth across Columbus.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>What support do you provide besides tennis?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>We combine tennis with research-backed stress relief techniques and personal mentorship from our volunteer coaches.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Can kids keep their equipment after clinics?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Absolutely. Every participant receives a free racket to continue playing independently, long after the clinic ends.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>How can I volunteer or donate equipment?</span><span class="faq-icon"></span></button>
+        <div class="faq-a"><p>Reach out through the contact form below or by phone. We welcome volunteer coaches, racket donations, and court-time sponsors.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Get involved</span>
+      <h2>Want to be part of the <em>team</em>?</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card" data-reveal>
+        <h3>Let's talk tennis.</h3>
+        <p class="intro">We're here to help you get involved and support young players in Columbus and beyond. Reach out directly or use the form.</p>
+        <div class="contact-info">
+          <div class="item">
+            <div class="ic">☎</div>
+            <div><div class="lbl">Phone</div><div class="val"><a href="tel:+17408037552">(740) 803-7552</a></div></div>
+          </div>
+          <div class="item">
+            <div class="ic">✉</div>
+            <div><div class="lbl">Email</div><div class="val"><a href="mailto:prathikamathi14@gmail.com">prathikamathi14@gmail.com</a></div></div>
+          </div>
+          <div class="item">
+            <div class="ic">◔</div>
+            <div><div class="lbl">Hours</div><div class="val">Mon–Fri, 8am–6pm</div></div>
+          </div>
+          <div class="item">
+            <div class="ic">◍</div>
+            <div><div class="lbl">Based in</div><div class="val">Columbus, Ohio</div></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="cform" id="contactForm" data-reveal novalidate>
+        <div class="field" id="f-name">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+          <span class="err">Please enter your name.</span>
+        </div>
+        <div class="field" id="f-email">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <span class="err">Please enter a valid email address.</span>
+        </div>
+        <div class="field" id="f-message">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us how you'd like to get involved..." required></textarea>
+          <span class="err">Please add a short message.</span>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="btn btn-clay">Submit</button>
+          <span class="form-note">Opens your email client, addressed to our team.</span>
+        </div>
+        <div class="form-success" id="formSuccess">Thanks! Your email client should now be open with your message ready to send.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#top" class="footer-logo">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="34" height="34">
+            <circle cx="20" cy="20" r="19" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="2"/>
+            <path d="M20 1C13 8 13 32 20 39M20 1c7 7 7 24 0 31M1.5 20h37" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="1.4"/>
+            <circle cx="20" cy="20" r="19" stroke="#D8F24E" stroke-width="2" stroke-dasharray="4 6"/>
+          </svg>
+          <span class="logo-text">Aces for Access<span>Breaking barriers, building futures</span></span>
+        </a>
+        <p>A 501(c)(3) nonprofit providing free rackets, coaching, and court time to underserved youth in Columbus, Ohio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#programs">Programs</a>
+        <a href="#story">Our Story</a>
+        <a href="#signup">Sign Up</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="mailto:prathikamathi14@gmail.com">prathikamathi14@gmail.com</a>
+        <a href="tel:+17408037552">(740) 803-7552</a>
+        <a href="https://www.gofundme.com/f/help-underserved-youth-play-tennis" target="_blank" rel="noopener">Donate on GoFundMe</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Aces for Access. A 501(c)(3) nonprofit organization. Columbus, Ohio.</span>
+      <span>Free rackets · Free coaching · Free court time.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Back to top">↑</button>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+  <div>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // header scroll state
+  var header = document.getElementById('site-header');
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    header.classList.toggle('scrolled', y > 30);
+    toTop.classList.toggle('show', y > 500);
+  });
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  // mobile menu
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.remove('open'); });
+  });
+
+  // scroll-spy
+  var navLinks = document.querySelectorAll('nav.primary a');
+  var sections = ['programs','story','signup','faq','contact'].map(function(id){return document.getElementById(id);});
+  function onScrollSpy(){
+    var pos = window.scrollY + 140;
+    var current = null;
+    sections.forEach(function(sec){
+      if(sec && sec.offsetTop <= pos) current = sec.id;
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#'+current);
+    });
+  }
+  window.addEventListener('scroll', onScrollSpy);
+  onScrollSpy();
+
+  // reveal on scroll
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, {threshold:.15});
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  // waveform draw-in
+  var wf = document.getElementById('waveform');
+  var wfIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ wf.classList.add('in-view'); wfIo.unobserve(wf); }
+    });
+  }, {threshold:.3});
+  wfIo.observe(wf);
+
+  // count-up stats
+  var counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var nogroup = el.getAttribute('data-nogroup') === 'true';
+    var dur = 1400, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var val = Math.floor(eased * target);
+      el.textContent = (target >= 1000 && !nogroup ? val.toLocaleString() : val) + (suffix === 's' ? '+' : suffix);
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ animateCount(e.target); countIo.unobserve(e.target); }
+    });
+  }, {threshold:.6});
+  counters.forEach(function(c){ countIo.observe(c); });
+
+  // ---- Sign-up form: validates, then submits to a Google Sheet via Google Apps Script ----
+  // 1. Create a Google Sheet with columns: Timestamp, Name, Student, Email, Phone
+  // 2. In the Sheet, go to Extensions > Apps Script and paste the doPost script from the
+  //    instructions provided alongside this file, then Deploy > New deployment > Web app
+  //    (Execute as: Me, Who has access: Anyone), and copy the deployment URL below.
+  var GOOGLE_SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzVcMYLkGIHI2sQ42CeP0EMjhPUY7x-P7uoG_buNGlUa0bvAtgKCgazfl39sCKLE3eXIQ/exec";
+
+  var signupForm = document.getElementById('signupForm');
+  var signupSuccess = document.getElementById('signupSuccess');
+  var signupError = document.getElementById('signupError');
+
+  signupForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    signupSuccess.classList.remove('show');
+    signupError.classList.remove('show');
+
+    var name = document.getElementById('s_name');
+    var student = document.getElementById('s_student');
+    var email = document.getElementById('s_email');
+    var phone = document.getElementById('s_phone');
+    var valid = true;
+
+    function check(input, wrapId, testFn){
+      var wrap = document.getElementById(wrapId);
+      var ok = testFn(input.value.trim());
+      wrap.classList.toggle('invalid', !ok);
+      if(!ok) valid = false;
+      return ok;
+    }
+    check(name, 's-name', function(v){ return v.length > 1; });
+    check(student, 's-student', function(v){ return v.length > 1; });
+
+    var emailVal = email.value.trim();
+    var phoneVal = phone.value.trim();
+    var emailOk = emailVal === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+    var hasContact = emailVal !== '' || phoneVal !== '';
+    document.getElementById('s-email').classList.toggle('invalid', !emailOk || (!hasContact));
+    document.getElementById('s-phone').classList.toggle('invalid', !hasContact && phoneVal === '');
+    if(!emailOk || !hasContact) valid = false;
+
+    if(!valid) return;
+
+    var payload = {
+      name: name.value.trim(),
+      student: student.value.trim(),
+      email: emailVal,
+      phone: phoneVal,
+      timestamp: new Date().toISOString()
+    };
+
+    if(GOOGLE_SHEETS_ENDPOINT.indexOf('PASTE_YOUR') === 0){
+      // Endpoint not configured yet: fall back to opening a pre-filled email so no sign-up is lost.
+      var subject = encodeURIComponent('Aces for Access sign-up: ' + payload.name);
+      var body = encodeURIComponent(
+        'Name: ' + payload.name + '\n' +
+        'Student: ' + payload.student + '\n' +
+        'Email: ' + (payload.email || 'n/a') + '\n' +
+        'Phone: ' + (payload.phone || 'n/a')
+      );
+      window.location.href = 'mailto:prathikamathi14@gmail.com?subject=' + subject + '&body=' + body;
+      signupSuccess.classList.add('show');
+      signupForm.reset();
+      return;
+    }
+
+    try {
+      fetch(GOOGLE_SHEETS_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(payload)
+      }).then(function(){
+        signupSuccess.classList.add('show');
+        signupForm.reset();
+      }).catch(function(){
+        signupError.classList.add('show');
+      });
+    } catch (err) {
+      signupError.classList.add('show');
+    }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    function setState(open){
+      item.classList.toggle('open', open);
+      q.setAttribute('aria-expanded', open);
+      a.style.maxHeight = open ? a.scrollHeight + 'px' : '0px';
+    }
+    setState(item.classList.contains('open'));
+    q.addEventListener('click', function(){
+      var willOpen = !item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = '0px';
+        }
+      });
+      setState(willOpen);
+    });
+  });
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.faq-item.open .faq-a').forEach(function(a){ a.style.maxHeight = a.scrollHeight + 'px'; });
+  });
+
+  // lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCap = document.getElementById('lightboxCap');
+  document.querySelectorAll('.lightbox-trigger').forEach(function(fig){
+    fig.addEventListener('click', function(){
+      lightboxImg.src = fig.getAttribute('data-full');
+      lightboxImg.alt = fig.querySelector('img').alt;
+      lightboxCap.textContent = fig.getAttribute('data-cap') || '';
+      lightbox.classList.add('open');
+    });
+  });
+  function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+
+  // contact form validation -> mailto
+  var form = document.getElementById('contactForm');
+  var success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name');
+    var email = document.getElementById('email');
+    var message = document.getElementById('message');
+    var valid = true;
+
+    function check(input, wrapId, testFn){
+      var wrap = document.getElementById(wrapId);
+      var ok = testFn(input.value.trim());
+      wrap.classList.toggle('invalid', !ok);
+      if(!ok) valid = false;
+      return ok;
+    }
+    check(name, 'f-name', function(v){ return v.length > 1; });
+    check(email, 'f-email', function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
+    check(message, 'f-message', function(v){ return v.length > 4; });
+
+    if(!valid){ success.classList.remove('show'); return; }
+
+    var subject = encodeURIComponent('Aces for Access: message from ' + name.value.trim());
+    var body = encodeURIComponent(message.value.trim() + '\n\nFrom: ' + name.value.trim() + ' (' + email.value.trim() + ')');
+    window.location.href = 'mailto:prathikamathi14@gmail.com?subject=' + subject + '&body=' + body;
+
+    success.classList.add('show');
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
