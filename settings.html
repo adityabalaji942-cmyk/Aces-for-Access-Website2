@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Settings — Aces for Access</title>
+<meta name="description" content="Adjust display and accessibility preferences for the Aces for Access website: dark or light mode, text size, contrast, and motion.">
+
+<script>
+/* Site preferences: applied before styles render to avoid a flash of the wrong settings. */
+(function(){
+  var KEY = 'acesPrefs';
+  function load(){
+    try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; }
+  }
+  function apply(prefs){
+    var html = document.documentElement;
+    html.setAttribute('data-theme', prefs.theme || 'dark');
+    html.setAttribute('data-text-size', prefs.textSize || 'medium');
+    html.setAttribute('data-contrast', prefs.contrast || 'normal');
+    html.setAttribute('data-motion', prefs.motion || 'normal');
+  }
+  window.AcesPrefs = {
+    load: load,
+    save: function(prefs){ localStorage.setItem(KEY, JSON.stringify(prefs)); apply(prefs); },
+    apply: apply
+  };
+  apply(load());
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#0F2019; --court:#0D3B2C; --court-2:#144C39; --court-deep:#082017;
+    --chalk:#F7F4EC; --paper:#FFFFFF;
+    --ace:#D8F24E; --ace-dim:#c3db46;
+    --clay:#C1440E; --clay-2:#A6390A;
+    --sky:#63C6E8; --sky-2:#3FAFD6;
+    --sunset:#FF9142; --sunset-2:#F07319;
+    --line:rgba(15,32,25,.13); --line-soft:rgba(247,244,236,.18);
+    --muted:#526457; --shadow:0 20px 50px -25px rgba(8,32,23,.45);
+    --radius:18px; --maxw:820px; --card-tint:rgba(15,32,25,.03);
+  }
+  html[data-theme="dark"]{
+    --ink:#F3F7F1; --chalk:#0B1712; --paper:#12211B; --muted:#9FB3A4;
+    --line:rgba(243,247,241,.12); --line-soft:rgba(243,247,241,.18);
+    --shadow:0 24px 60px -28px rgba(0,0,0,.65); --card-tint:rgba(243,247,241,.04);
+  }
+  html[data-contrast="high"]{
+    --ink:#000000; --muted:#2c2c2c; --line:rgba(0,0,0,.4); --line-soft:rgba(255,255,255,.4);
+    --chalk:#FFFFFF; --court:#052A1E; --clay:#A6390A;
+  }
+  html[data-contrast="high"][data-theme="dark"]{
+    --ink:#FFFFFF; --muted:#d6d6d6; --chalk:#000000; --paper:#0A0A0A; --line:rgba(255,255,255,.4);
+  }
+  html[data-text-size="small"] body{font-size:15px;}
+  html[data-text-size="medium"] body{font-size:16px;}
+  html[data-text-size="large"] body{font-size:18.5px;}
+  @media (prefers-reduced-motion:reduce){ *{transition-duration:.001ms !important;} }
+  html[data-motion="reduced"] *{transition-duration:.001ms !important;}
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--chalk);
+    -webkit-font-smoothing:antialiased;line-height:1.5;transition:background .3s ease,color .3s ease;
+  }
+  h1,h2{font-family:'Fraunces',serif;margin:0;font-weight:600;letter-spacing:-.01em;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  header{border-bottom:1px solid var(--line);padding:18px 0;}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-mark{width:32px;height:32px;object-fit:contain;flex-shrink:0;}
+  html[data-theme="dark"] .logo-mark[data-mark="light"]{display:none;}
+  html[data-theme="light"] .logo-mark[data-mark="dark"]{display:none;}
+  .logo-text{font-family:'Fraunces',serif;font-weight:600;font-size:18px;}
+  .back-link{font-size:14.5px;font-weight:500;text-decoration:none;opacity:.8;display:inline-flex;align-items:center;gap:6px;}
+  .back-link:hover{opacity:1;}
+
+  main{padding:56px 0 90px;}
+  .page-head{margin-bottom:40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;
+    display:inline-flex;align-items:center;gap:10px;color:var(--clay);font-weight:500;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--clay);display:inline-block;}
+  .page-head h1{font-size:clamp(28px,4vw,38px);margin-top:14px;}
+  .page-head p{margin-top:12px;color:var(--muted);font-size:15.5px;max-width:56ch;}
+
+  .setting-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 28px;margin-bottom:20px;
+  }
+  .setting-card h2{font-size:19px;}
+  .setting-card .desc{margin-top:6px;color:var(--muted);font-size:14px;max-width:56ch;}
+  .option-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+  .option-btn{
+    flex:1;min-width:120px;padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);
+    background:transparent;color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:600;
+    cursor:pointer;transition:.2s;text-align:center;
+  }
+  .option-btn:hover{background:var(--card-tint);}
+  .option-btn.active{background:var(--court);border-color:var(--court);color:#fff;}
+  html[data-theme="dark"] .option-btn.active{background:var(--ace);border-color:var(--ace);color:var(--court-deep);}
+
+  .accent-strip{display:flex;gap:8px;margin-top:22px;}
+  .accent-strip span{flex:1;height:6px;border-radius:99px;}
+
+  .save-note{
+    display:none;margin-top:22px;padding:14px 18px;border-radius:12px;font-size:14px;
+    background:rgba(216,242,78,.14);border:1px solid rgba(193,68,14,.2);color:var(--court);
+  }
+  html[data-theme="dark"] .save-note{color:var(--ace);border-color:rgba(216,242,78,.3);}
+  .save-note.show{display:block;}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-size:13px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html#top" class="logo">
+      <img src="mark-dark.png" data-mark="dark" class="logo-mark" alt="" aria-hidden="true">
+      <img src="mark-light.png" data-mark="light" class="logo-mark" alt="" aria-hidden="true">
+      <span class="logo-text">Aces for Access</span>
+    </a>
+    <a href="index.html" class="back-link">← Back to site</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">Site settings</span>
+      <h1>Make the site work for you.</h1>
+      <p>These preferences are saved on this device and apply across the whole Aces for Access site, including dark and light mode, text size, contrast, and motion.</p>
+      <div class="accent-strip" aria-hidden="true">
+        <span style="background:var(--ace);"></span>
+        <span style="background:var(--sky);"></span>
+        <span style="background:var(--sunset);"></span>
+        <span style="background:var(--clay);"></span>
+      </div>
+    </div>
+
+    <div class="setting-card">
+      <h2>Appearance</h2>
+      <p class="desc">Choose a dark or light theme. The site starts in dark mode by default.</p>
+      <div class="option-row" data-group="theme">
+        <button class="option-btn" data-value="dark" type="button">Dark mode</button>
+        <button class="option-btn" data-value="light" type="button">Light mode</button>
+      </div>
+    </div>
+
+    <div class="setting-card">
+      <h2>Text size</h2>
+      <p class="desc">Increase text size across the site for easier reading.</p>
+      <div class="option-row" data-group="textSize">
+        <button class="option-btn" data-value="small" type="button">Small</button>
+        <button class="option-btn" data-value="medium" type="button">Medium</button>
+        <button class="option-btn" data-value="large" type="button">Large</button>
+      </div>
+    </div>
+
+    <div class="setting-card">
+      <h2>Contrast</h2>
+      <p class="desc">High contrast increases the difference between text and backgrounds.</p>
+      <div class="option-row" data-group="contrast">
+        <button class="option-btn" data-value="normal" type="button">Normal</button>
+        <button class="option-btn" data-value="high" type="button">High contrast</button>
+      </div>
+    </div>
+
+    <div class="setting-card">
+      <h2>Motion</h2>
+      <p class="desc">Reduce animations and smooth-scrolling throughout the site.</p>
+      <div class="option-row" data-group="motion">
+        <button class="option-btn" data-value="normal" type="button">Normal</button>
+        <button class="option-btn" data-value="reduced" type="button">Reduced motion</button>
+      </div>
+    </div>
+
+    <div class="save-note" id="saveNote">Preferences saved to this device.</div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Aces for Access. A 501(c)(3) nonprofit organization. Columbus, Ohio.</div>
+</footer>
+
+<script>
+(function(){
+  var prefs = window.AcesPrefs.load();
+  var defaults = { theme:'dark', textSize:'medium', contrast:'normal', motion:'normal' };
+  var current = Object.assign({}, defaults, prefs);
+  var note = document.getElementById('saveNote');
+  var noteTimer = null;
+
+  function refreshButtons(){
+    document.querySelectorAll('.option-row').forEach(function(row){
+      var group = row.getAttribute('data-group');
+      row.querySelectorAll('.option-btn').forEach(function(btn){
+        btn.classList.toggle('active', btn.getAttribute('data-value') === current[group]);
+      });
+    });
+  }
+
+  document.querySelectorAll('.option-row').forEach(function(row){
+    var group = row.getAttribute('data-group');
+    row.querySelectorAll('.option-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        current[group] = btn.getAttribute('data-value');
+        window.AcesPrefs.save(current);
+        refreshButtons();
+        note.classList.add('show');
+        clearTimeout(noteTimer);
+        noteTimer = setTimeout(function(){ note.classList.remove('show'); }, 2200);
+      });
+    });
+  });
+
+  refreshButtons();
+})();
+</script>
+</body>
+</html>
