@@ -6,12 +6,6 @@
 <title>Aces for Access: Free Tennis, Coaching & Stress Relief for Columbus Youth</title>
 <meta name="description" content="Aces for Access is a new 501(c)(3) nonprofit providing free rackets, coaching, and court time to underserved youth in Columbus, Ohio, founded by a young player who wants every kid to have a shot at the game.">
 
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-
 <script>
 /* Site preferences: applied before styles render to avoid a flash of the wrong settings. */
 (function(){
@@ -339,7 +333,7 @@
   .photo-placeholder span{font-size:13.5px;color:rgba(255,255,255,.65);font-family:'IBM Plex Mono',monospace;letter-spacing:.02em;}
   @media (max-width:640px){.photo-placeholder{aspect-ratio:4/3;}}
 
-  .story-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:start;max-width:760px;margin:0 auto;}
+  .story-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:38px;align-items:start;}
   .story-copy p{margin-bottom:18px;color:#2a3a30;font-size:16.5px;}
   .story-copy p:last-of-type{margin-bottom:0;}
   .pull-line{
@@ -348,6 +342,19 @@
     font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--court);
     font-weight:500;
   }
+  .story-gallery{display:grid;grid-template-columns:1fr;gap:16px;}
+  .story-gallery figure{margin:0;border-radius:14px;overflow:hidden;cursor:zoom-in;position:relative;}
+  .story-gallery img{height:200px;width:100%;object-fit:cover;transition:transform .5s ease;}
+  .story-gallery figure:hover img{transform:scale(1.06);}
+  .story-gallery figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+    background:linear-gradient(0deg, rgba(8,32,23,.75), transparent);
+    color:#fff;font-size:12px;font-family:'IBM Plex Mono',monospace;
+  }
+
+  @media (max-width:900px){.story-grid{grid-template-columns:1fr;}.story-gallery{grid-template-columns:1fr 1fr;}}
+  @media (max-width:640px){.story-gallery{grid-template-columns:1fr;}}
+
   /* ---------- Programs ---------- */
   .programs{background:var(--chalk);}
   .program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -357,13 +364,9 @@
     transition:transform .3s ease, box-shadow .3s ease;
   }
   .program-card:hover{transform:translateY(-6px);}
-  .program-media{position:relative;height:210px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(155deg,var(--court) 0%,var(--court-deep) 100%);}
-  .program-icon{color:var(--ace);opacity:.9;transition:transform .5s ease;}
-  .program-card:hover .program-icon{transform:scale(1.1);}
-  .program-card:nth-child(2) .program-media{background:linear-gradient(155deg,#1b4f63 0%,#0d2c38 100%);}
-  .program-card:nth-child(2) .program-icon{color:var(--sky);}
-  .program-card:nth-child(3) .program-media{background:linear-gradient(155deg,#5c2f13 0%,#33190b 100%);}
-  .program-card:nth-child(3) .program-icon{color:var(--sunset);}
+  .program-media{position:relative;height:210px;overflow:hidden;cursor:zoom-in;}
+  .program-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
+  .program-card:hover .program-media img{transform:scale(1.08);}
   .program-num{
     position:absolute;top:14px;left:14px;
     background:rgba(8,32,23,.72);color:var(--ace);
@@ -411,9 +414,15 @@
     padding:22px 26px 30px;transition:transform .3s ease, box-shadow .3s ease;
   }
   .partner-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .partner-photo{
+    width:100%;aspect-ratio:4/3;margin:-4px -4px 6px;
+    background-size:cover;background-position:center;
+    -webkit-mask-image:radial-gradient(ellipse 78% 78% at center, #000 55%, transparent 100%);
+    mask-image:radial-gradient(ellipse 78% 78% at center, #000 55%, transparent 100%);
+  }
   .partner-ic{
     width:52px;height:52px;border-radius:14px;background:var(--court);color:var(--ace);
-    display:flex;align-items:center;justify-content:center;margin:0 0 16px;
+    display:flex;align-items:center;justify-content:center;margin:-8px 0 16px;
     box-shadow:0 10px 24px -10px rgba(8,32,23,.5);
   }
   .partner-card:nth-child(2) .partner-ic{background:#1b4f63;color:var(--sky);}
@@ -642,6 +651,18 @@
         <p>Tennis gave Prathik discipline, patience, and confidence, and he wants every young athlete to have that same chance, regardless of what their family can afford. He's joined by a founding team who share that same drive: <strong>Aditya Balaji</strong>, <strong>Jashwin Pisini</strong>, <strong>Pariksith Pothamsetty</strong>, <strong>Harsha Ganduri</strong>, and <strong>Vihaan Singharia</strong>. For our whole team, this work comes from a shared love of the sport and a real desire to help kids build strength, both physical and mental, while giving back to the community that shaped us.</p>
         <p>Aces for Access is a 501(c)(3) nonprofit providing completely free tennis equipment, court access, and coaching to underserved youth across Columbus. We're just getting started, and our first clinics are still ahead of us.</p>
       </div>
+      <div class="story-gallery-col">
+        <div class="story-gallery">
+          <figure class="lightbox-trigger" data-full="https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=1600&q=80" data-cap="Every racket donated is theirs to keep.">
+            <img src="https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=900&q=80" alt="Donated tennis racket ready to be given to a young player" loading="lazy">
+            <figcaption>Equipment donations</figcaption>
+          </figure>
+          <figure class="lightbox-trigger" data-full="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?auto=format&fit=crop&w=1600&q=80" data-cap="One of our volunteer coaches, mid-session.">
+            <img src="https://images.unsplash.com/photo-1545809074-59472b3f5ecc?auto=format&fit=crop&w=900&q=80" alt="Coach holding a tennis ball and racket, mentoring a young player" loading="lazy">
+            <figcaption>Coaching &amp; mentorship</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -655,9 +676,9 @@
     </div>
     <div class="program-grid">
       <div class="program-card" data-reveal>
-        <div class="program-media">
+        <div class="program-media lightbox-trigger" data-full="https://images.unsplash.com/photo-1504030688812-2c4804e8d291?auto=format&fit=crop&w=1600&q=80" data-cap="Open clinics welcome ages 10–18.">
           <span class="program-num">01 / 03</span>
-          <svg class="program-icon" width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.5c-2.4 2-3.6 5.2-3.6 8.5s1.2 6.5 3.6 8.5" stroke="currentColor" stroke-width="1.4"/><path d="M12 3.5c2.4 2 3.6 5.2 3.6 8.5s-1.2 6.5-3.6 8.5" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 12h17" stroke="currentColor" stroke-width="1.4"/></svg>
+          <img src="https://images.unsplash.com/photo-1504030688812-2c4804e8d291?auto=format&fit=crop&w=900&q=80" alt="Young player holding a tennis racket, standing on a sunlit court" loading="lazy">
         </div>
         <div class="program-body">
           <span class="program-tag">Clinics</span>
@@ -666,9 +687,9 @@
         </div>
       </div>
       <div class="program-card" data-reveal>
-        <div class="program-media">
+        <div class="program-media lightbox-trigger" data-full="https://images.unsplash.com/photo-1637071692126-d0ee7df18271?auto=format&fit=crop&w=1600&q=80" data-cap="Six volunteer coaches, our Aces.">
           <span class="program-num">02 / 03</span>
-          <svg class="program-icon" width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21c-4.5-3-8-6.5-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 3.5c0 4-3.5 7.5-8 10.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          <img src="https://images.unsplash.com/photo-1637071692126-d0ee7df18271?auto=format&fit=crop&w=900&q=80" alt="Coach on a tennis court holding a racket, ready to teach" loading="lazy">
         </div>
         <div class="program-body">
           <span class="program-tag">Coaching</span>
@@ -677,9 +698,9 @@
         </div>
       </div>
       <div class="program-card" data-reveal>
-        <div class="program-media">
+        <div class="program-media lightbox-trigger" data-full="https://images.unsplash.com/photo-1715431900724-6bf15144ae0e?auto=format&fit=crop&w=1600&q=80" data-cap="No child is sidelined by cost.">
           <span class="program-num">03 / 03</span>
-          <svg class="program-icon" width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8.5 12 4l8 4.5-8 4.5-8-4.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 8.5V16l8 4.5 8-4.5V8.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 13v7.5" stroke="currentColor" stroke-width="1.4"/></svg>
+          <img src="https://images.unsplash.com/photo-1715431900724-6bf15144ae0e?auto=format&fit=crop&w=900&q=80" alt="Player standing on a tennis court holding a racket, gear in hand" loading="lazy">
         </div>
         <div class="program-body">
           <span class="program-tag">Equipment</span>
@@ -714,19 +735,25 @@
       <p style="margin-top:16px;color:var(--muted);font-size:16px;">Columbus is our home court, but the mission doesn't stop there. We're glad to work alongside other clubs, academies, and nonprofits who want to get more kids playing.</p>
     </div>
     <div class="partner-grid">
-      <div class="partner-card" data-reveal>        <div class="partner-ic">
+      <div class="partner-card" data-reveal>
+        <div class="partner-photo" style="background-image:url('https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Donated tennis rackets ready to share with other programs"></div>
+        <div class="partner-ic">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 12V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7" stroke="currentColor" stroke-width="1.5"/><path d="M16 16.5l2.5 2.5L22.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Equipment sharing</h3>
         <p>When we have spare rackets, balls, or gear, we pass them along to other programs so nothing sits unused in storage.</p>
       </div>
-      <div class="partner-card" data-reveal>        <div class="partner-ic">
+      <div class="partner-card" data-reveal>
+        <div class="partner-photo" style="background-image:url('https://images.unsplash.com/photo-1545809074-59472b3f5ecc?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Volunteer coach mentoring a young player on court"></div>
+        <div class="partner-ic">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21c-4.5-3-8-6.5-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 3.5c0 4-3.5 7.5-8 10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
         </div>
         <h3>Coaching resources</h3>
         <p>Our clinic plans, drills, and mentorship approach are free for other youth programs to borrow and adapt for their own courts.</p>
       </div>
-      <div class="partner-card" data-reveal>        <div class="partner-ic">
+      <div class="partner-card" data-reveal>
+        <div class="partner-photo" style="background-image:url('https://images.unsplash.com/photo-1504030688812-2c4804e8d291?auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Young player on a sunlit tennis court, representing academies worldwide"></div>
+        <div class="partner-ic">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <h3>Academies worldwide</h3>
