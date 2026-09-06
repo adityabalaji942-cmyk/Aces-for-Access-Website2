@@ -444,6 +444,25 @@
   @media (max-width:900px){.partner-grid{grid-template-columns:1fr;}}
   @media (max-width:640px){.partner-cta{flex-direction:column;align-items:flex-start;}}
 
+  /* featured partner spotlight */
+  .partner-spotlight{
+    margin-top:32px;display:grid;grid-template-columns:.9fr 1.1fr;gap:0;
+    background:var(--chalk);border:1px solid var(--line);border-radius:24px;overflow:hidden;
+    text-decoration:none;color:inherit;transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .partner-spotlight:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .partner-spotlight-media{min-height:220px;background-size:cover;background-position:center;}
+  .partner-spotlight-body{padding:32px 34px;display:flex;flex-direction:column;justify-content:center;}
+  .partner-spotlight-body h3{font-size:24px;margin-top:12px;}
+  .partner-spotlight-body p{margin-top:12px;color:var(--muted);font-size:15.5px;}
+  .partner-spotlight-link{
+    margin-top:20px;display:inline-flex;align-items:center;gap:8px;
+    color:var(--clay);font-weight:600;font-size:14.5px;
+  }
+  .partner-spotlight:hover .partner-spotlight-link{gap:12px;}
+  .partner-spotlight-link svg{transition:transform .2s ease;}
+  @media (max-width:820px){.partner-spotlight{grid-template-columns:1fr;}.partner-spotlight-media{min-height:200px;}}
+
   /* ---------- Volunteer / Exec team ---------- */
   .volunteer{background:var(--chalk);}
   .volunteer-cta{display:flex;justify-content:center;}
@@ -763,6 +782,15 @@
         <p>We're open to connecting with tennis academies anywhere, helping students grow stronger, on the court and in confidence.</p>
       </div>
     </div>
+    <a href="partner-scarborough-east.html" class="partner-spotlight" data-reveal>
+      <div class="partner-spotlight-media" style="background-image:url('scarborough-1.jpg')" role="img" aria-label="Prathik Amathi and Jashwin Pisini with bags of tennis balls donated by Scarborough East"></div>
+      <div class="partner-spotlight-body">
+        <span class="eyebrow">Featured partner</span>
+        <h3>Scarborough East Tennis &amp; Fitness Club</h3>
+        <p>Our newest partner just donated 2,500 tennis balls, getting us so much closer to being ready for our first clinics.</p>
+        <span class="partner-spotlight-link">Read the story <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
     <div class="partner-cta" data-reveal>
       <p>Run a program, club, or academy that could use a hand? We would love to hear from you.</p>
       <a href="#contact" class="btn btn-clay">Start a Partnership</a>
